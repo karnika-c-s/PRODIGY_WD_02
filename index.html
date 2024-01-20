@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Stop watch</title>
+        <style>
+            body{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 70px 0px 0px 0px;
+                background-image: url("D:\\Personal\\Prodigy Web dev intern\\task-2\\bg.jpg");
+                background-size: cover; 
+                background-position: center; 
+                background-repeat: no-repeat;
+                background-color: black;
+                        
+            }
+            .div{
+                
+                padding: 30px 5px 5px 40px;
+                height: 450px;
+                width: 340px;
+                border-radius: 5px;
+                border: 1px solid white;
+               
+                
+            }
+            .div1{ 
+                background-color: rgb(251, 250, 246); 
+                padding: 3px;
+                height: 300px;
+                width: 300px;
+                border-radius: 50%;
+            }
+            .div2{
+                background-color: rgb(23, 21, 21); 
+                padding: 5px;
+                height: 290px;
+                width: 290px;
+                border-radius: 50%;
+            }
+            .div3{
+                padding: 110px 0px 0px 20px;
+                color: aliceblue;
+                font-size: 55px;
+               
+            }
+            .div4{
+                padding: 30px 20px 0px 13px;
+                height: 70px;
+                width: 350px;
+                
+            }
+            .start{
+                border-radius: 50% ;
+                border-color: aliceblue;
+                color: aliceblue;
+                background-color: black;
+                height: 100px;
+                width: 100px;   
+            }
+            .lap,.reset{
+                border-radius: 50% ;
+                border-color: aliceblue;
+                color: aliceblue;
+                background-color: black;
+                height: 70px;
+                width: 70px;   
+            }
+            .laps{
+                align-items: center;
+                justify-content: center;
+                height: 300px;
+                overflow: auto;
+                color: aliceblue;
+                padding: 50px 30px 0px 30px
+                
+            }
+            .but{
+                padding: 30px 50px;
+            }
+            .lap-item{
+                background-color:black;
+                display: inline-block;
+                border-style: 1px solid white;
+                width: 150px;
+                padding: 15px 40px 0px 40px ;
+                text-align: center;
+                font-size: 20px;
+                border: 2px solid white;
+            }
+            .number{
+                color: aliceblue;
+                font-size: 20px;
+            }
+            .time-stamp{
+                display: inline-block;
+                margin-left: 15px;
+                font-size: 20px;
+                padding: 5px 0px 0px 0px;
+
+            }
+            .start:hover{
+                background-color: aliceblue;
+                color: black;
+            }
+            .lap:hover{
+                background-color: aliceblue;
+                color: black;
+            }
+            .reset:hover{
+                background-color: aliceblue;
+                color: black;
+            }
+            .clear{ 
+                border-radius: 25px;
+                height: 40px;
+                width: 80px;
+            }
+            .hidden{ visibility:hidden ;}
+            .msec, .sec, .min{ font-size: 53px;}
+
+        </style>
+    </head>
+    <body>
+        <div class="div">
+            <div class="div1">
+                <div class="div2">
+                    <div class="div3">
+                        <span class="min">00 :</span>
+                        <span class="sec"> 00 :</span>
+                        <span class="msec"> 00 </span>
+                    </div>
+                </div>
+            </div>
+            <div class="div4">&nbsp;
+                <button class="reset hidden">reset</button>&nbsp;&nbsp;
+                <button class="start">Start</button>&nbsp;&nbsp;
+                <button class="lap hidden">lap</button>
+            </div>
+            <ul class="laps">
+                <!-- <br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="clear">Clear</button><br><br> -->
+            </ul>
+        </div>
+
+        <script>
+
+            const lapButton= document.getElementsByClassName("lap")[0];
+            const startButton= document.getElementsByClassName("start")[0];
+            const resetButton= document.getElementsByClassName("reset")[0];
+            const minute= document.getElementsByClassName("min")[0];
+            const second= document.getElementsByClassName("sec")[0];
+            const centiSecond= document.getElementsByClassName("msec")[0];
+            const lapList = document.querySelector(".laps");
+            const clearButton = document.querySelector(".clear");
+
+
+
+            let isStart= false
+            let secCounter=0;
+            let sec;
+            let centisec;
+            let centisecCounter=0;
+            let min;
+            let minCounter=0;
+            let isReset=false;
+            let lapTimes = [];
+
+            const toggleButton = () => {
+                lapButton.classList.remove("hidden")
+                resetButton.classList.remove("hidden")
+            }
+
+            const start=()=>{
+                if (isStart && isReset){
+                    startButton.innerHTML='Start';
+                    clearInterval(sec);
+                    clearInterval(centisec);
+
+                    isStart=false;
+                    isReset=false;
+
+                }else{
+                    startButton.innerHTML='Pause';
+
+                    min = setInterval(() =>{
+                        minute.innerHTML= ` ${++minCounter} : `;
+                        }, 60 * 1000);
+
+                    sec = setInterval(() =>{
+                        if (secCounter==60){
+                            secCounter=0;
+                        }
+                        second.innerHTML= ` ${++secCounter} : `;
+                        }, 1000);
+
+                    centisec = setInterval(() =>{
+                        if (centisecCounter==100){
+                            centisecCounter=0;
+                        }
+                        centiSecond.innerHTML= ` ${++centisecCounter}  `;
+                    }, 10);
+                    isStart=true;
+                    isReset=true;
+                }
+                toggleButton();
+            }
+
+            const reset= () => {
+                start();
+                isReset=true;
+                lapButton.classList.add("hidden");
+                resetButton.classList.add("hidden");
+                minute.innerHTML=' 00 :'
+                second.innerHTML=' 00 : '
+                centiSecond.innerHTML= ' 00'
+
+            }
+
+            const lap = () => {
+                const lapTime = `${minCounter}:${secCounter}:${centisecCounter}`;
+                lapTimes.push(lapTime);
+
+                const lapItem = document.createElement("li");
+                lapItem.className = "lap-item";
+                lapItem.innerHTML = `<span class="number">${lapTimes.length}</span>: ${lapTime}`;
+
+                lapList.appendChild(lapItem);
+            };
+
+            const clearLaps = () => {
+                lapList.innerHTML = "";
+                lapTimes = [];
+            };
+
+
+            startButton.addEventListener("click",start);
+            resetButton.addEventListener("click",reset);
+            lapButton.addEventListener("click",lap);
+            clearButton.addEventListener("click",clear);
+
+        </script>
+        
+    </body>
+</html>
