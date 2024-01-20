@@ -1,0 +1,116 @@
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 70px 0px 0px 0px;
+        background-image: url("D:\\Personal\\Prodigy Web dev intern\\task-2\\bg.jpg");
+        background-size: cover; 
+        background-position: center; 
+        background-repeat: no-repeat;
+        background-color: black;
+                
+    }
+    .div{
+        
+        padding: 30px 5px 5px 40px;
+        height: 450px;
+        width: 340px;
+        border-radius: 5px;
+        border: 1px solid white;
+    
+        
+    }
+    .div1{ 
+        background-color: rgb(251, 250, 246); 
+        padding: 3px;
+        height: 300px;
+        width: 300px;
+        border-radius: 50%;
+    }
+    .div2{
+        background-color: rgb(23, 21, 21); 
+        padding: 5px;
+        height: 290px;
+        width: 290px;
+        border-radius: 50%;
+    }
+    .div3{
+        padding: 110px 0px 0px 20px;
+        color: aliceblue;
+        font-size: 55px;
+    
+    }
+    .div4{
+        padding: 30px 20px 0px 13px;
+        height: 70px;
+        width: 350px;
+        
+    }
+    .start{
+        border-radius: 50% ;
+        border-color: aliceblue;
+        color: aliceblue;
+        background-color: black;
+        height: 100px;
+        width: 100px;   
+    }
+    .lap,.reset{
+        border-radius: 50% ;
+        border-color: aliceblue;
+        color: aliceblue;
+        background-color: black;
+        height: 70px;
+        width: 70px;   
+    }
+    .laps{
+        align-items: center;
+        justify-content: center;
+        height: 300px;
+        overflow: auto;
+        color: aliceblue;
+        padding: 50px 30px 0px 30px
+        
+    }
+    .but{
+        padding: 30px 50px;
+    }
+    .lap-item{
+        background-color:black;
+        display: inline-block;
+        border-style: 1px solid white;
+        width: 150px;
+        padding: 15px 40px 0px 40px ;
+        text-align: center;
+        font-size: 20px;
+        border: 2px solid white;
+    }
+    .number{
+        color: aliceblue;
+        font-size: 20px;
+    }
+    .time-stamp{
+        display: inline-block;
+        margin-left: 15px;
+        font-size: 20px;
+        padding: 5px 0px 0px 0px;
+
+    }
+    .start:hover{
+        background-color: aliceblue;
+        color: black;
+    }
+    .lap:hover{
+        background-color: aliceblue;
+        color: black;
+    }
+    .reset:hover{
+        background-color: aliceblue;
+        color: black;
+    }
+    .clear{ 
+        border-radius: 25px;
+        height: 40px;
+        width: 80px;
+    }
+    .hidden{ visibility:hidden ;}
+    .msec, .sec, .min{ font-size: 53px;}
