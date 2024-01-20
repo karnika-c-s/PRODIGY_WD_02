@@ -1,6 +1,6 @@
 
 # Stop Watch
-A simple stopwatch created using HTML, CSS, and JavaScript. The stopwatch allows users to start, record laps, and reset the timer.
+A simple stopwatch created using HTML, CSS, and JavaScript. The stopwatch allows users to start, record laps, and reset 
 ## Features
 1. Start: Begin the stopwatch to measure time.
 2. Lap: Record a lap while the stopwatch is running.
